@@ -15,7 +15,7 @@ export const useInitialState = () => {
             ...state,
             library: localStorage.getItem("web3-library") || "web3"
         });
-    }, [state.library]);
+    }, [state.library]); // [state]
 
     // Switch between libraries
     const switchLibrary = () => {

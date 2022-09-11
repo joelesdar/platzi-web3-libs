@@ -6,8 +6,8 @@ import {
     Text,
     Button,
     Stack,
-    FormLabel,
-    Switch,
+    RadioGroup,
+    Radio,
     Image,
     Badge,
     Stat,
@@ -20,7 +20,6 @@ import {
 import { useWeb3React } from '@web3-react/core'
 import { AppContext } from '../../context/AppContext'
 import useCalculateVoting from '../../hooks/useCalculateVoting'
-import { CheckCircleIcon, CloseIcon } from "@chakra-ui/icons"
 
 
 export const Home = () => {
@@ -81,19 +80,16 @@ export const Home = () => {
                         alignSelf={'center'}
                         position={'relative'}
                         mt={-50}>
-                        <Stack direction="row" mb={12}>
-                            <FormLabel htmlFor="email-alerts" mb="0">
-                                Web3
-                            </FormLabel>
-                            <Switch
-                                colorScheme="blue"
-                                size="lg"
-                                onChange={switchLibrary}
-                            />
-                            <FormLabel htmlFor="email-alerts" mb="0">
-                                EtherJS
-                            </FormLabel>
-                        </Stack>
+                        <RadioGroup defaultValue={state.library} onChange={switchLibrary} mt={0}>
+                            <Stack spacing={5} direction='row' color='#fff'>
+                                <Radio colorScheme='red' value='web3'>
+                                    Web3.js
+                                </Radio>
+                                <Radio colorScheme='green' value='ethers'>
+                                    Ethers.js
+                                </Radio>
+                            </Stack>
+                        </RadioGroup>
                     </Stack>
                     <Heading
                         color='#fff'
@@ -101,86 +97,97 @@ export const Home = () => {
                         fontSize={{ base: '2xl', sm: '4xl', md: '6xl' }}>
                         Voting
                     </Heading>
-                    <Heading color='#fff'>Pineapple Pizza? 🍕{state.library}</Heading>
+                    <Heading color='#fff'>Pineapple Pizza?🍕🍍</Heading>
+                    <Text color={'white'} fontSize="lg">For voting you have to connect your Metamask Wallet and sign the transaction with the Goerly Network.</Text>
                     {active ? (
                         <>
-                            <Stack
-                                direction={'row'}
-                                spacing={16}
-                                alignSelf={'around'}
-                                position={'relative'}>
-                                <StatGroup width={"100%"} color='#fff'>
-                                    <Stat>
-                                        <Box
-                                            display={"flex"}
-                                            flexDirection={"column"}
-                                            alignItems="center"
-                                        >
-                                            <Stack direction="row" spacing={4}>
-                                                <Button
-                                                    isLoading={voting}
-                                                    isDisabled={alreadyVoted}
-                                                    onClick={() => handleVote(2)}
-                                                    colorScheme={'green'}
-                                                    bg={'green.400'}
-                                                    rounded={'full'}
-                                                    px={6}
-                                                    _hover={{
-                                                        bg: 'green.500',
-                                                    }}>
-                                                    Yes 🍍
-                                                </Button>
-                                            </Stack>
-                                            <StatLabel>Vote for yes</StatLabel>
-                                            <StatNumber>{positiveVotes}</StatNumber>
-                                            <StatHelpText>
-                                                <StatArrow type="increase" />
-                                                {`${percentYes}%`}
-                                            </StatHelpText>
-                                        </Box>
-                                    </Stat>
-                                    <Stat>
-                                        <Box
-                                            display={"flex"}
-                                            flexDirection={"column"}
-                                            alignItems="center"
-                                        >
-                                            <Stack direction="row" spacing={4}>
-                                                <Button
-                                                    isLoading={voting}
-                                                    isDisabled={alreadyVoted}
-                                                    onClick={() => handleVote(1)}
-                                                    colorScheme={'orange'}
-                                                    bg={'orange.400'}
-                                                    rounded={'full'}
-                                                    px={6}
-                                                    _hover={{
-                                                        bg: 'orange.500',
-                                                    }}>
-                                                    No ❌
-                                                </Button>
-                                            </Stack>
-                                            <StatLabel>Vote for No</StatLabel>
-                                            <StatNumber>{negativeVotes}</StatNumber>
-                                            <StatHelpText>
-                                                <StatArrow type="decrease" />
-                                                {`${percentNo}%`}
-                                            </StatHelpText>
-                                        </Box>
-                                    </Stat>
-                                </StatGroup>
-                            </Stack>
+                        <Stack
+                            direction={'row'}
+                            spacing={16}
+                            alignSelf={'around'}
+                            position={'relative'}
+                            >
+                            <StatGroup width={"100%"} color='#fff'>
+                                <Stat>
+                                    <Box
+                                        display={"flex"}
+                                        flexDirection={"column"}
+                                        alignItems="center"
+                                    >
+                                        <Stack direction="row" spacing={4}>
+                                            <Button
+                                                isLoading={voting}
+                                                isDisabled={alreadyVoted}
+                                                onClick={() => handleVote(2)}
+                                                colorScheme={'green'}
+                                                bg={'green.400'}
+                                                rounded={'full'}
+                                                px={6}
+                                                _hover={{
+                                                    bg: 'green.500',
+                                                }}>
+                                                Yes 🍍
+                                            </Button>
+                                        </Stack>
+                                        <StatLabel>Vote for yes</StatLabel>
+                                        <StatNumber>{positiveVotes}</StatNumber>
+                                        <StatHelpText>
+                                            <StatArrow type="increase" />
+                                            {`${percentYes}%`}
+                                        </StatHelpText>
+                                    </Box>
+                                </Stat>
+                                <Stat>
+                                    <Box
+                                        display={"flex"}
+                                        flexDirection={"column"}
+                                        alignItems="center"
+                                    >
+                                        <Stack direction="row" spacing={4}>
+                                            <Button
+                                                isLoading={voting}
+                                                isDisabled={alreadyVoted}
+                                                onClick={() => handleVote(1)}
+                                                colorScheme={'orange'}
+                                                bg={'orange.400'}
+                                                rounded={'full'}
+                                                px={6}
+                                                _hover={{
+                                                    bg: 'orange.500',
+                                                }}>
+                                                No ❌
+                                            </Button>
+                                        </Stack>
+                                        <StatLabel>Vote for No</StatLabel>
+                                        <StatNumber>{negativeVotes}</StatNumber>
+                                        <StatHelpText>
+                                            <StatArrow type="decrease" />
+                                            {`${percentNo}%`}
+                                        </StatHelpText>
+                                    </Box>
+                                </Stat>
+                            </StatGroup>
+                        </Stack>
                             {alreadyVoted ? (
-                                <Badge mt={2} colorScheme={"yellow"}>
-                                    You are emitted vote for this proposal
+                                <Stack
+                                    align={"center"}
+                                >
 
-                                </Badge>
+                                    <Badge mt={2} colorScheme={"orange"} width='230px' pt={2} pb={2}>
+                                        You are already voted for this.
+
+                                    </Badge>
+                                </Stack>
                             ) : (
                                 ""
                             )}
-                        </>
+                    </>
                     ) : (
-                        <Badge mt={2} colorScheme={"red"}>Wallet desconectado</Badge>
+                        <Stack
+                            align={"center"}
+                            >
+                            <Badge mt={2} colorScheme={"red"} width='230px' pt={2} pb={2}>Disconnected Wallet</Badge>
+                        </Stack>
                     )
                     }
                 </Stack>

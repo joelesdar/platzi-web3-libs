@@ -16,8 +16,8 @@ const useCalculateVoting = () => {
     const getData = async () => {
         if (active) {
             let web3;
-            if (state.library === 'web3') {
-                web3 = new Web3Method(library?.web3.currentProvider, chainId);
+            if (state.library === "web3") {
+                web3 = new Web3Method(chainId, library?.web3.currentProvider);
             } else {
                 web3 = new EthersMethod(chainId, library?.ethers);
             }
@@ -35,7 +35,7 @@ const useCalculateVoting = () => {
     };
 
     useMemo(() => {
-        getData();
+      getData();
     }, [library, chainId, active]);
 
     const toast = useToast();
@@ -66,8 +66,8 @@ const useCalculateVoting = () => {
     setVoting(false);
   };
 
-  const percentYes = (positiveVotes / (positiveVotes + negativeVotes)).toFixed(2);
-  const percentNo = (negativeVotes / (positiveVotes + negativeVotes)).toFixed(2);
+  const percentYes = (positiveVotes * 100/ (positiveVotes + negativeVotes)).toFixed(2);
+  const percentNo = (negativeVotes * 100/ (positiveVotes + negativeVotes)).toFixed(2);
 
   return {
     positiveVotes,
@@ -76,7 +76,7 @@ const useCalculateVoting = () => {
     negativeVotes,
     voting,
     alreadyVoted,
-    handleVote,
+    handleVote
   };
 };
 

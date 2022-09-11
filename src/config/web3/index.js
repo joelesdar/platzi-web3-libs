@@ -11,7 +11,7 @@ const connector = new InjectedConnector({
 const getLibrary = (provider) => {
   const ethersProvider = new Web3Provider(provider);
   const web3Provider = new Web3(provider);
-  return { ethers: ethersProvider, web3: web3Provider }; // this will vary according to whether you use e.g. ethers or web3.js
+  return { ethers: ethersProvider, web3: web3Provider };
 }
 
 export { getLibrary, connector };

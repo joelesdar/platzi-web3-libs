@@ -19,7 +19,7 @@ class Web3Method {
         return Number(yesVotes);
     }
     async getNoVotes() {
-        const noVotes = await this.contract.votesForNo();
+        const noVotes = await this.contract.methods.votesForNo().call();
         return Number(noVotes);
     }
     
@@ -30,7 +30,7 @@ class Web3Method {
     }
     
     async VOTE_FEE() {
-        const VOTE_FEE = await this.contract.VOTE_FEE();
+        const VOTE_FEE = await this.contract.methods.VOTE_FEE().call();
         return Web3.utils.fromWei(VOTE_FEE);
     }
     
