@@ -15,7 +15,7 @@ The smart contract is deployed at `0xacfc7725527ba2ee4311574f65e5d76f9f9585e9`. 
 
 ## Stack and tools
 
-For this challenge the next technologies were used:
+For this challenge the following technologies were used:
 1. React.js for the frontend.
 2. Chakra-UI for UI/UX.
 3. Web3.js and Ethers.js for the integration with the Smart Contract.
