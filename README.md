@@ -1,22 +1,24 @@
-# Platzi Web3 Exercise
+# Platzi and Protofire Web3.js-Ethers.js Challenge
 
-## Goal
+## Description
 
-Create a DApp that allows people to vote on a (binary) proposal. Each ethereum address should be allowed to vote only once and the vote should cost 0.01 ETH.
+This Dapp is a voting system that allows an Ethereum address to vote only once on a binary proposal with a cost of 0.01 ETH choosing its favorite frontend-web3 library: web3.js or ethers.js. For this, the Dapp works in the Görli testnet and is connected with MetaMask.
 
-When a user opens the page, it should see the result so far (number of positive votes vs. number of negative votes). Real-time updating is a bonus, but not required.
+When a user votes, it can see the result so far (number of positive votes vs. number of negative votes).
 
-The app should consist only of a frontend. It should work in Görli and with MetaMask.
+[Demo of the Dapp](https://platzi-web3-libs-roan.vercel.app/)
 
-The contract is already deployed at `0xacfc7725527ba2ee4311574f65e5d76f9f9585e9`. You can see it [here](https://goerli.etherscan.io/address/0xacfc7725527ba2ee4311574f65e5d76f9f9585e9#code).
+The smart contract is deployed at `0xacfc7725527ba2ee4311574f65e5d76f9f9585e9`. You can see it [here](https://goerli.etherscan.io/address/0xacfc7725527ba2ee4311574f65e5d76f9f9585e9#code).
+
+![Dapp](./public/images/demo1.png)
 
 
 ## Stack and tools
 
-The only two requirements are:
-1. Use React for the frontend
-2. Use [web3.js](https://web3js.readthedocs.io/) and [ethers.js](https://docs.ethers.io/). The user should be able to switch between the two libraries and everything should work the same.
+For this challenge the next technologies were used:
+1. React.js for the frontend.
+2. Chakra-UI for UI/UX.
+3. Web3.js and Ethers.js for the integration with the Smart Contract.
+4. Solidity on the side of the Smart Contract.
 
-Everything else is up to you. We recommend using [web3-react](https://github.com/NoahZinsmeister/web3-react), but it's not required.
-
-You can get Görli ether [here](https://faucet.paradigm.xyz/).
+To use this Dapp is necessary Metamask and a funded Görli account. You can get Görli ether [here](https://faucet.paradigm.xyz/).
